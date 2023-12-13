@@ -36,7 +36,7 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <i class="fa-solid fa-box-open-full"></i>
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="">Brand</a>
+                <a class="collapse-item" href="{{ route('index-brand') }}">Brand</a>
             </div>
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="">Kategori</a>
