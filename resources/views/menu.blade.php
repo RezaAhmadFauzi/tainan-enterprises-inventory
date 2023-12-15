@@ -45,7 +45,7 @@
                 <a class="collapse-item" href="{{ route('index-supplier') }}">Supplier</a>
             </div>
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="">Atribut</a>
+                <a class="collapse-item" href="{{ route('index-atribut') }}">Atribut</a>
             </div>
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="">Barang</a>

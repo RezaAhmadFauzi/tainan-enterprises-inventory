@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AtributController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KategoriController;
@@ -48,6 +49,15 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/edit/{idSupplier}', [SupplierController::class, 'edit'])->name('edit-supplier');
         Route::put('/update/{idSupplier}', [SupplierController::class, 'update'])->name('update-supplier');
         Route::delete('/delete/{idSupplier}', [SupplierController::class, 'delete'])->name('delete-supplier');
+    });
+
+    Route::prefix('atribut')->group(function () {
+        Route::get('/', [AtributController::class, 'index'])->name('index-atribut');
+        Route::get('/create', [AtributController::class, 'create'])->name('create-atribut');
+        Route::post('/store', [AtributController::class, 'store'])->name('store-atribut');
+        Route::get('/edit/{idAtribut}', [AtributController::class, 'edit'])->name('edit-atribut');
+        Route::put('/update/{idAtribut}', [AtributController::class, 'update'])->name('update-atribut');
+        Route::delete('/delete/{idAtribut}', [AtributController::class, 'delete'])->name('delete-atribut');
     });
     
 });
