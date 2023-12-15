@@ -31,7 +31,7 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
             aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-book"></i>
-            <span>Master Barang</span>
+            <span>Master Data</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <i class="fa-solid fa-box-open-full"></i>
@@ -39,10 +39,10 @@
                 <a class="collapse-item" href="{{ route('index-brand') }}">Brand</a>
             </div>
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="">Kategori</a>
+                <a class="collapse-item" href="{{ route('index-kategori') }}">Kategori</a>
             </div>
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="">Supplier</a>
+                <a class="collapse-item" href="{{ route('index-supplier') }}">Supplier</a>
             </div>
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="">Atribut</a>
