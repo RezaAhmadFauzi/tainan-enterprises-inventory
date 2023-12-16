@@ -63,10 +63,10 @@
         <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
             <i class="fa-solid fa-box-open-full"></i>
             <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="">Barang Masuk</a>
+            <a class="collapse-item" href="{{ route('index-barangMasuk') }}">Barang Masuk</a>
             </div>
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="">Barang Keluar</a>
+                <a class="collapse-item" href="{{ route('index-barangKeluar') }}">Barang Keluar</a>
             </div>
         </div>
     </li>
