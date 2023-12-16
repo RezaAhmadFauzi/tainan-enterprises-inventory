@@ -35,4 +35,9 @@ class BarangKeluar extends Model
 
         self::observe(BarangKeluarObserver::class);
     }
+
+    public function barang()
+    {
+        return $this->belongsTo(Barang::class, 'id_barang');
+    }
 }

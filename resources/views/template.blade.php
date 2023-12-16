@@ -83,7 +83,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Reza Ahmad Fauzi 2023 - Undira - UAS Pemograman Web Full Stack</span>
+                        <span>Copyright &copy; Reza Ahmad Fauzi 2023</span>
                     </div>
                 </div>
             </footer>
