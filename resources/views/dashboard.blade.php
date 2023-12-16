@@ -60,7 +60,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Total pengiriman 3 bulan terakhir</div>
+                                Total Brand</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $chart3 ?? null }}</div>
                         </div>
                         <div class="col-auto">
@@ -78,7 +78,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                Pengriman Lokasi Terbanyak 1 Bulan Terakhir</div>
+                            Total Kategori</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $chart4 ?? null }}</div>
                         </div>
                         <div class="col-auto">
@@ -95,9 +95,9 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                            Jumlah Barang terbanyak yang dijadikan sebagai item yang dikirim selama 1 tahun terakhir</div>
+                            Total Supplier</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $chart5->nama_barang ?? null }}</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">Total : {{ $chart5->total ?? null }}</div>
+                            <!-- <div class="h5 mb-0 font-weight-bold text-gray-800">Total : {{ $chart5->total ?? null }}</div> -->
                         </div>
                         <div class="col-auto">
                             <!-- <i class="fas fa-dollar-sign fa-2x text-gray-300"></i> -->
@@ -119,7 +119,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Total pengiriman 3 bulan terakhir</div>
+                            Total Barang</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $chart3 ?? null }}</div>
                         </div>
                         <div class="col-auto">
@@ -137,7 +137,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                Pengriman Lokasi Terbanyak 1 Bulan Terakhir</div>
+                            Total Barang Masuk</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $chart4 ?? null }}</div>
                         </div>
                         <div class="col-auto">
@@ -154,9 +154,9 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                            Jumlah Barang terbanyak yang dijadikan sebagai item yang dikirim selama 1 tahun terakhir</div>
+                            Total Barang Keluar</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $chart5->nama_barang ?? null }}</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">Total : {{ $chart5->total ?? null }}</div>
+                            <!-- <div class="h5 mb-0 font-weight-bold text-gray-800">Total : {{ $chart5->total ?? null }}</div> -->
                         </div>
                         <div class="col-auto">
                             <!-- <i class="fas fa-dollar-sign fa-2x text-gray-300"></i> -->
