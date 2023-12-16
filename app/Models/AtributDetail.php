@@ -2,11 +2,10 @@
 
 namespace App\Models;
 
-use App\Observers\AtributObserver;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Atribut extends Model
+class AtributDetail extends Model
 {
     use HasFactory;
     
@@ -34,21 +33,10 @@ class Atribut extends Model
 
     protected $fillable = [
         'id',
-        'nama_atribut',
+        'id_atribut',
+        'value',
         'status',
         'created_at',
         'updated_at'
     ];
-
-    public static function boot()
-    {
-        parent::boot();
-
-        self::observe(AtributObserver::class);
-    }
-
-    public function details()
-    {
-        return $this->hasMany('App\Models\AtributDetail', 'id_atribut');
-    }
 }

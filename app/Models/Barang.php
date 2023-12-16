@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
-use App\Observers\AtributObserver;
+use App\Observers\BarangObserver;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Atribut extends Model
+class Barang extends Model
 {
     use HasFactory;
     
@@ -34,7 +34,11 @@ class Atribut extends Model
 
     protected $fillable = [
         'id',
-        'nama_atribut',
+        'nama_barang',
+        'kode_barang',
+        'id_kategori',
+        'id_brand',
+        'atribute',
         'status',
         'created_at',
         'updated_at'
@@ -44,11 +48,16 @@ class Atribut extends Model
     {
         parent::boot();
 
-        self::observe(AtributObserver::class);
+        self::observe(BarangObserver::class);
     }
 
-    public function details()
+    public function brand()
     {
-        return $this->hasMany('App\Models\AtributDetail', 'id_atribut');
+        return $this->belongsTo(Brand::class, 'id_brand');
+    }
+
+    public function kategori()
+    {
+        return $this->belongsTo(Kategori::class, 'id_kategori');
     }
 }

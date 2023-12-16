@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AtributController;
+use App\Http\Controllers\BarangController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KategoriController;
@@ -58,6 +59,15 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/edit/{idAtribut}', [AtributController::class, 'edit'])->name('edit-atribut');
         Route::put('/update/{idAtribut}', [AtributController::class, 'update'])->name('update-atribut');
         Route::delete('/delete/{idAtribut}', [AtributController::class, 'delete'])->name('delete-atribut');
+    });
+
+    Route::prefix('barang')->group(function () {
+        Route::get('/', [BarangController::class, 'index'])->name('index-barang');
+        Route::get('/create', [BarangController::class, 'create'])->name('create-barang');
+        Route::post('/store', [BarangController::class, 'store'])->name('store-barang');
+        Route::get('/edit/{idBarang}', [BarangController::class, 'edit'])->name('edit-barang');
+        Route::put('/update/{idBarang}', [BarangController::class, 'update'])->name('update-barang');
+        Route::delete('/delete/{idBarang}', [BarangController::class, 'delete'])->name('delete-barang');
     });
     
 });
