@@ -49,6 +49,12 @@ class Atribut extends Model
 
     public function details()
     {
-        return $this->hasMany('App\Models\AtributDetail', 'id_atribut');
+        return $this->hasMany(AtributDetail::class, 'id_atribut');
+    }
+
+    protected static function booted () {
+        static::deleting(function(Atribut $atribut) {
+             $atribut->details()->delete();
+        });
     }
 }

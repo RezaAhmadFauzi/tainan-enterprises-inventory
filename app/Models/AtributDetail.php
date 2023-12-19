@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Observers\AtributDetailObserver;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -39,4 +40,11 @@ class AtributDetail extends Model
         'created_at',
         'updated_at'
     ];
+
+    public static function boot()
+    {
+        parent::boot();
+
+        self::observe(AtributDetailObserver::class);
+    }
 }

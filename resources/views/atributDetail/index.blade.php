@@ -3,16 +3,19 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Data Atribut</h1>
+    <h1 class="h3 mb-2 text-gray-800">Data Atribut Detail</h1>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <a href="{{ route('create-atribut') }}" class="btn btn-primary btn-icon-split">
+        <div class="card-header py-2">
+            <a href="{{ route('create-atributDetail', $idAtribut) }}" class="btn btn-primary btn-icon-split">
                 <span class="icon text-white-50">
                     <i class="fas fa-plus"></i>
                 </span>
                 <span class="text">Tambah Data</span>
+            </a>
+            <a href="{{ route('index-atribut') }}" class="btn btn-warning btn-icon-split">
+                <span class="text">Kembali</span>
             </a>
         </div>
         
@@ -22,7 +25,7 @@
                 <thead>
                         <tr>
                             <th>No</th>
-                            <th>Nama Atribut</th>
+                            <th>Nama Atribut Detail</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -31,11 +34,11 @@
                         @foreach ($data as $row)
                         <tr {!! $loop->odd ? 'style="background: #F0F5F9;" ' : '' !!}>
                             <td class="wrap-all">{{ $loop->index + 1 }}</td>
-                            <td><a href="{{ route('index-atributDetail', $row->id) }}">{{ $row['nama_atribut'] }}</a></td>
+                            <td>{{ $row['value'] }}</td>
                             <td>{{ $row['statusName'] }}</td>
                             <td>
-                                <form action="{{ route('delete-atribut', $row->id) }}" method="POST">
-                                    <a href="{{ route('edit-atribut', $row->id) }}" class="btn btn-primary btn-circle btn-sm">
+                                <form action="{{ route('delete-atributDetail', $row->id) }}" method="POST">
+                                    <a href="{{ route('edit-atributDetail', $row->id) }}" class="btn btn-primary btn-circle btn-sm">
                                     <i class="fas fa-pencil-alt"></i>
                                     </a>
                                     @csrf

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AtributController;
+use App\Http\Controllers\AtributDetailController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\BarangKeluarController;
 use App\Http\Controllers\BarangMasukController;
@@ -88,6 +89,15 @@ Route::group(['middleware' => 'auth'], function () {
         // Route::get('/edit/{idBarangKeluar}', [BarangKeluarController::class, 'edit'])->name('edit-barangKeluar');
         // Route::put('/update/{idBarangKeluar}', [BarangKeluarController::class, 'update'])->name('update-barangKeluar');
         // Route::delete('/delete/{idBarangKeluar}', [BarangKeluarController::class, 'delete'])->name('delete-barangKeluar');
+    });
+
+    Route::prefix('atributDetail')->group(function () {
+        Route::get('/{idAtribut}', [AtributDetailController::class, 'index'])->name('index-atributDetail');
+        Route::get('/{idAtribut}/create', [AtributDetailController::class, 'create'])->name('create-atributDetail');
+        Route::post('/store', [AtributDetailController::class, 'store'])->name('store-atributDetail');
+        Route::get('/edit/{idAtributDetail}', [AtributDetailController::class, 'edit'])->name('edit-atributDetail');
+        Route::put('/update/{idAtributDetail}', [AtributDetailController::class, 'update'])->name('update-atributDetail');
+        Route::delete('/delete/{idAtributDetail}', [AtributDetailController::class, 'delete'])->name('delete-atributDetail');
     });
     
 });

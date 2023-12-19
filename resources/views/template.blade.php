@@ -165,3 +165,17 @@
         );
     });
 </script>
+
+<script>
+    $(document).ready(function() {
+        $('#atributDetail').DataTable(
+            // {
+            //     dom: 'Bfrtip',
+            //     buttons: [
+            //         'excelHtml5',
+            //         'pdfHtml5'
+            //     ]
+            // }
+        );
+    });
+</script>
