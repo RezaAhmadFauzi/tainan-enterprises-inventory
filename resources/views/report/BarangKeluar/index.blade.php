@@ -3,18 +3,10 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Data Barang Masuk</h1>
+    <h1 class="h3 mb-2 text-gray-800">Laporan Barang Keluar</h1>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <a href="{{ route('create-barangMasuk') }}" class="btn btn-primary btn-icon-split">
-            <span class="icon text-white-50">
-                <i class="fas fa-plus"></i>
-            </span>
-            <span class="text">Tambah Data</span>
-        </a>
-        </div>
         
         <div class="card-body">
             <div class="table-responsive">
@@ -24,9 +16,9 @@
                             <th>No</th>
                             <th>Kode Barang</th>
                             <th>Nama Barang</th>
-                            <th>Jumlah Masuk</th>
-                            <th>Tanngal Masuk</th>
-                            <th>Action</th>
+                            <th>Jumlah Keluar</th>
+                            <th>Tanggal Keluar</th>
+                            <th>Tujuan</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -35,9 +27,9 @@
                             <td class="wrap-all">{{ $loop->index + 1 }}</td>
                             <td>{{ $row['kode_barang'] }}</td>
                             <td>{{ $row->barang->nama_barang}}</td>
-                            <td>{{ $row['jumlah_masuk'] }}</td>
-                            <td>{{ $row['tanggal_masuk'] }}</td>
-                            <td></td>
+                            <td>{{ $row['jumlah_keluar'] }}</td>
+                            <td>{{ $row['tanggal_keluar'] }}</td>
+                            <td>{{ $row['tujuan'] }}</td>
                         </tr>
                         @endforeach
                     </tbody>

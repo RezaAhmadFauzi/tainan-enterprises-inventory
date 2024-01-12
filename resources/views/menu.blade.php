@@ -81,10 +81,10 @@
         <div id="collapseReport" class="collapse" aria-labelledby="headingReport" data-parent="#accordionSidebar">
             <i class="fa-solid fa-box-open-full"></i>
             <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="">Laporan Barang Masuk</a>
+            <a class="collapse-item" href="{{ route('report-barangMasuk') }}">Laporan Barang Masuk</a>
             </div>
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="">Laporan Barang Keluar</a>
+                <a class="collapse-item" href="{{ route('report-barangKeluar') }}">Laporan Barang Keluar</a>
             </div>
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="">Laporan Stok Barang</a>

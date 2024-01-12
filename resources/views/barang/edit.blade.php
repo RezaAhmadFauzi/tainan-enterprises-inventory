@@ -56,7 +56,7 @@
             <div class="form-group">
                 <input type="hidden" class="form-control" value="{{ $attribut->id }}" name="idAtribut[]">
                 <label for="{{ $attributName }}">{{ $attributName }}:</label>
-                <select name="idAtributDetail[]" class="form-control" id="{{ $attributName }}" required>
+                <select name="idAtributDetail[]" class="form-control" id="{{ $attributName }}">
                     <option value=""> -- pilih --</option>
                     @foreach ($details as $detail)
                     @php

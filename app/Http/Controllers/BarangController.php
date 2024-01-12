@@ -8,6 +8,7 @@ use App\Models\AtributDetail;
 use App\Models\Barang;
 use App\Models\Brand;
 use App\Models\Kategori;
+use App\Services\BarangService;
 use Illuminate\Http\Request;
 
 class BarangController extends Controller
@@ -139,5 +140,23 @@ class BarangController extends Controller
         $string = preg_replace("/[^0-9\.]/", '', $latest->kode_barang);
 
         return 'BR-' . sprintf('%04d', $string+1);
+    }
+
+    public function getBarangById(Request $request)
+    {
+        $barang = BarangService::searchBarang($request);
+
+        return response()->json($barang, 200);
+    }
+
+    public function getData($kodeBarang)
+    {
+        $data = Barang::with('kategori','brand')->where('kode_barang', $kodeBarang)->get();
+
+        if (count($data)) {
+            return response()->json($data);
+        } else {
+            return response()->json(['error' => 'Category not found'], 404);
+        }
     }
 }

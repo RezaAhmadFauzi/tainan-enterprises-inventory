@@ -71,15 +71,18 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/edit/{idBarang}', [BarangController::class, 'edit'])->name('edit-barang');
         Route::put('/update/{idBarang}', [BarangController::class, 'update'])->name('update-barang');
         Route::delete('/delete/{idBarang}', [BarangController::class, 'delete'])->name('delete-barang');
+
     });
+    Route::get('/get-data/{kodeBarang}', [BarangController::class, 'getData']);
 
     Route::prefix('barangMasuk')->group(function () {
         Route::get('/', [BarangMasukController::class, 'index'])->name('index-barangMasuk');
-        // Route::get('/create', [BarangMasukController::class, 'create'])->name('create-barangMasuk');
+        Route::get('/create', [BarangMasukController::class, 'create'])->name('create-barangMasuk');
         // Route::post('/store', [BarangMasukController::class, 'store'])->name('store-barangMasuk');
         // Route::get('/edit/{idBarangMasuk}', [BarangMasukController::class, 'edit'])->name('edit-barangMasuk');
         // Route::put('/update/{idBarangMasuk}', [BarangMasukController::class, 'update'])->name('update-barangMasuk');
         // Route::delete('/delete/{idBarangMasuk}', [BarangMasukController::class, 'delete'])->name('delete-barangMasuk');
+        Route::get('/report', [BarangMasukController::class, 'report'])->name('report-barangMasuk');
     });
 
     Route::prefix('barangKeluar')->group(function () {
@@ -89,6 +92,7 @@ Route::group(['middleware' => 'auth'], function () {
         // Route::get('/edit/{idBarangKeluar}', [BarangKeluarController::class, 'edit'])->name('edit-barangKeluar');
         // Route::put('/update/{idBarangKeluar}', [BarangKeluarController::class, 'update'])->name('update-barangKeluar');
         // Route::delete('/delete/{idBarangKeluar}', [BarangKeluarController::class, 'delete'])->name('delete-barangKeluar');
+        Route::get('/report', [BarangKeluarController::class, 'report'])->name('report-barangKeluar');
     });
 
     Route::prefix('atributDetail')->group(function () {
