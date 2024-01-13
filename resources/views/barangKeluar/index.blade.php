@@ -40,8 +40,8 @@
                             <td>{{ $row['tanggal_keluar'] }}</td>
                             <td>{{ $row['tujuan'] }}</td>
                             <td>
-                                <!-- <form action="{{ route('delete-brand', $row->id) }}" method="POST">
-                                    <a href="{{ route('edit-brand', $row->id) }}" class="btn btn-primary btn-circle btn-sm">
+                                <form action="" method="POST">
+                                    <a href="" class="btn btn-primary btn-circle btn-sm">
                                     <i class="fas fa-pencil-alt"></i>
                                     </a>
                                     @csrf
@@ -49,7 +49,7 @@
                                     <button type="submit" class="btn btn-danger btn-circle btn-sm">
                                         <i class="fas fa-trash"></i>
                                     </button>
-                                </form> -->
+                                </form>
                             </td>
                         </tr>
                         @endforeach

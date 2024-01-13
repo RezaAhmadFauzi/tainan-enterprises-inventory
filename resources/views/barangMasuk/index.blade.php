@@ -37,7 +37,18 @@
                             <td>{{ $row->barang->nama_barang}}</td>
                             <td>{{ $row['jumlah_masuk'] }}</td>
                             <td>{{ $row['tanggal_masuk'] }}</td>
-                            <td></td>
+                            <td>
+                                <form action="" method="POST">
+                                    <a href="" class="btn btn-primary btn-circle btn-sm">
+                                    <i class="fas fa-pencil-alt"></i>
+                                    </a>
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-circle btn-sm">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </form>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>

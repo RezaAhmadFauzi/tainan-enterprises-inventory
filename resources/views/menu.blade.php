@@ -87,7 +87,7 @@
                 <a class="collapse-item" href="{{ route('report-barangKeluar') }}">Laporan Barang Keluar</a>
             </div>
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="">Laporan Stok Barang</a>
+                <a class="collapse-item" href="{{ route('report-stokBarang') }}">Laporan Stok Barang</a>
             </div>
         </div>
     </li>

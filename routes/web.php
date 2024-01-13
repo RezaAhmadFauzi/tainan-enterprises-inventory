@@ -8,6 +8,7 @@ use App\Http\Controllers\BarangMasukController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\StokBarangController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -110,6 +111,11 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::prefix('user')->group(function () {
         Route::get('/', [UserController::class, 'index'])->name('index-user');
+    });
+
+    Route::prefix('stokBarang')->group(function () {
+        Route::get('/report', [StokBarangController::class, 'report'])->name('report-stokBarang');
+        Route::get('/generateReport', [StokBarangController::class, 'generateReport'])->name('generate-report-stokBarang');
     });
     
 });
