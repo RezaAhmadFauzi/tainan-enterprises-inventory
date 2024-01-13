@@ -19,8 +19,8 @@
                         <input type="date" class="form-control" id="tanggal-akhir" placeholder="Select Tanggal akhir" name="end_date" required>
                     </div>
                     <div class="col-md-2" style="padding-top: 30px;">
-                        <button type="submit" class="btn btn-primary" target="_blank">
-                             Cetak
+                        <button type="submit" class="btn btn-danger" target="_blank">
+                        <i class="fas fa-file-pdf"> PDF </i>
                         </button>
                     </div>
                 </div>
