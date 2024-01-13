@@ -7,7 +7,7 @@
 
 <div class="card shadow mb-4">
     <div class="card-body">
-        <form action="" class="was-validated" method="POST">
+        <form action="" onclick="comingSoon()" class="was-validated" method="POST">
             @csrf
             <div class="form-group">
                 <label for="kode-barang-masuk">Kode Barang Masuk:</label>
@@ -18,12 +18,6 @@
             <div class="form-group">
                 <label for="tanggal-masuk">Tanggal Masuk:</label>
                 <input type="date" class="form-control" id="tanggal-masuk" placeholder="Select Tanggal Masuk" name="tanggal_masuk" required>
-                <div class="valid-feedback">Valid.</div>
-                <div class="invalid-feedback">Please fill out this field.</div>
-            </div>
-            <div class="form-group">
-                <label for="kode-barang">Kode Barang:</label>
-                <input type="text" class="form-control" id="kode-barang" placeholder="Enter Kode Barang" name="kode_barang" required>
                 <div class="valid-feedback">Valid.</div>
                 <div class="invalid-feedback">Please fill out this field.</div>
             </div>

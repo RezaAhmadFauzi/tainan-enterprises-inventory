@@ -72,6 +72,13 @@
                 </div>
                 @endif
 
+                @if ($message = Session::get('warning'))
+                <div class="alert alert-warning alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>Warning!</strong> {{ $message }}
+                </div>
+                @endif
+
                 <!-- Begin Page Content -->
                 @yield('content')
                 <!-- /.container-fluid -->
@@ -179,4 +186,9 @@
         );
     });
 </script>
-@stack('script')
+<script>
+    function comingSoon(){
+        alert('Akan segera hadir');
+    }
+</script>
+@stack('script')    

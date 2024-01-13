@@ -9,6 +9,7 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -83,6 +84,8 @@ Route::group(['middleware' => 'auth'], function () {
         // Route::put('/update/{idBarangMasuk}', [BarangMasukController::class, 'update'])->name('update-barangMasuk');
         // Route::delete('/delete/{idBarangMasuk}', [BarangMasukController::class, 'delete'])->name('delete-barangMasuk');
         Route::get('/report', [BarangMasukController::class, 'report'])->name('report-barangMasuk');
+        Route::get('/generateReport', [BarangMasukController::class, 'generateReport'])->name('generate-report-barangMasuk');
+
     });
 
     Route::prefix('barangKeluar')->group(function () {
@@ -93,6 +96,7 @@ Route::group(['middleware' => 'auth'], function () {
         // Route::put('/update/{idBarangKeluar}', [BarangKeluarController::class, 'update'])->name('update-barangKeluar');
         // Route::delete('/delete/{idBarangKeluar}', [BarangKeluarController::class, 'delete'])->name('delete-barangKeluar');
         Route::get('/report', [BarangKeluarController::class, 'report'])->name('report-barangKeluar');
+        Route::get('/generateReport', [BarangKeluarController::class, 'generateReport'])->name('generate-report-barangKeluar');
     });
 
     Route::prefix('atributDetail')->group(function () {
@@ -102,6 +106,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/edit/{idAtributDetail}', [AtributDetailController::class, 'edit'])->name('edit-atributDetail');
         Route::put('/update/{idAtributDetail}', [AtributDetailController::class, 'update'])->name('update-atributDetail');
         Route::delete('/delete/{idAtributDetail}', [AtributDetailController::class, 'delete'])->name('delete-atributDetail');
+    });
+
+    Route::prefix('user')->group(function () {
+        Route::get('/', [UserController::class, 'index'])->name('index-user');
     });
     
 });
