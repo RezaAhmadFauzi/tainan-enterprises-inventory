@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\ArrayHelper;
 use App\Models\Barang;
 use App\Models\BarangMasuk;
 use Carbon\Carbon;
@@ -10,6 +11,16 @@ use PDF;
 
 class BarangMasukController extends Controller
 {
+    /**
+     * @var ArrayHelper
+     */
+    private $arrayHelper;
+
+    public function __construct()
+    {
+        $this->arrayHelper = new ArrayHelper();
+    }
+
     public function index()
     {
         $data = BarangMasuk::paginate(10);
@@ -76,5 +87,17 @@ class BarangMasukController extends Controller
         $pdf = PDF::loadView('report.BarangMasuk.pdf', compact('results'));
         return $pdf->stream('Laporan-Barang-Masuk-Periode-' .$results['period'].'.pdf');
         
+    }
+
+    public function store(Request $request)
+    {
+        $idBarang = Barang::where('kode_barang', $request->kodeBarang)->pluck('id')->first();
+        
+        $inputs = $this->arrayHelper->snakeCaseKey($request->all());
+        $inputs['id_barang'] = $idBarang;
+        $inputs['jumlah_masuk'] = 0;
+        BarangMasuk::create($inputs);
+   
+        return redirect()->route('index-barangMasuk')->with('success', 'Data berhasil ditambahkan.');
     }
 }

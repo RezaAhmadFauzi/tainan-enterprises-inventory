@@ -3,21 +3,33 @@
 <div class="container-fluid">
 
 <!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800">Form Tambah Barang Masuk</h1>
+<h1 class="h3 mb-2 text-gray-800">Form Tambah Barang keluar</h1>
 
 <div class="card shadow mb-4">
     <div class="card-body">
-        <form action="{{ route('store-barangMasuk') }}" class="was-validated" method="POST">
+        <form action="{{ route('store-barangKeluar') }}" class="was-validated" method="POST">
             @csrf
             <div class="form-group">
-                <label for="kode-barang-masuk">Kode Barang Masuk:</label>
-                <input type="text" class="form-control" id="kode-barang-masuk" placeholder="Enter Kode Barang Masuk" name="kodeBarangMasuk" value="{{ $kodeBarangMasuk }}" required readonly>
+                <label for="kode-barang-keluar">Kode Barang keluar:</label>
+                <input type="text" class="form-control" id="kode-barang-keluar" placeholder="Enter Kode Barang keluar" name="kodeBarangKeluar" value="{{ $kodeBarangKeluar }}" required readonly>
                 <div class="valid-feedback">Valid.</div>
                 <div class="invalid-feedback">Please fill out this field.</div>
             </div>
             <div class="form-group">
-                <label for="tanggal-masuk">Tanggal Masuk:</label>
-                <input type="date" class="form-control" id="tanggal-masuk" placeholder="Select Tanggal Masuk" name="tanggalMasuk" required>
+                <label for="tanggal-keluar">Tanggal keluar:</label>
+                <input type="date" class="form-control" id="tanggal-keluar" placeholder="Select Tanggal Keluar" name="tanggalKeluar" required>
+                <div class="valid-feedback">Valid.</div>
+                <div class="invalid-feedback">Please fill out this field.</div>
+            </div>
+            <div class="form-group">
+                <label for="jumlah-barang-keluar">Jumlah Barang keluar:</label>
+                <input type="number" class="form-control" id="jumlah-barang-keluar" placeholder="Enter Jumlah Barang keluar" name="jumlahKeluar" required>
+                <div class="valid-feedback">Valid.</div>
+                <div class="invalid-feedback">Please fill out this field.</div>
+            </div>
+            <div class="form-group">
+                <label for="tujuan">Tujuan:</label>
+                <input type="te" class="form-control" id="tujuan" placeholder="Enter Tujuan" name="tujuan" required>
                 <div class="valid-feedback">Valid.</div>
                 <div class="invalid-feedback">Please fill out this field.</div>
             </div>
@@ -49,7 +61,7 @@
             
             <div class="form-group">
                 <button type="submit" class="btn btn-success">Submit</button>
-                <a href="{{ route('index-barangMasuk') }}" class="btn btn-warning">Cancel</a>
+                <a href="{{ route('index-barangKeluar') }}" class="btn btn-warning">Cancel</a>
             </div>
         </form>
     </div>
@@ -69,7 +81,7 @@
             type: 'GET',
             dataType: 'json',
             success: function(data){
-                // Memasukkan data ke dalam kolom input
+                // Masukan data ke dalam kolom input
                 $('#namaBarang').val(data[0].nama_barang);
                 $('#idKategori').val(data[0].kategori.id);
                 $('#namaKategori').val(data[0].kategori.nama_kategori);

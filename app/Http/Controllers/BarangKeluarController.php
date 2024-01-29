@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\ArrayHelper;
+use App\Models\Barang;
 use App\Models\BarangKeluar;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -9,6 +11,16 @@ use PDF;
 
 class BarangKeluarController extends Controller
 {
+    /**
+     * @var ArrayHelper
+     */
+    private $arrayHelper;
+
+    public function __construct()
+    {
+        $this->arrayHelper = new ArrayHelper();
+    }
+
     public function index()
     {
         $data = BarangKeluar::paginate(10);
@@ -21,6 +33,24 @@ class BarangKeluarController extends Controller
         $data = BarangKeluar::paginate(10);
 
         return view('report.BarangKeluar.index', compact('data'))->with('i', (request()->input('page', 1) - 1) * 5);
+    }
+
+    public function create()
+    {
+        $kodeBarang = Barang::all();
+        $kodeBarangKeluar = $this->generateKodeBarangKeluar();
+        return view('barangKeluar.create', compact('kodeBarangKeluar', 'kodeBarang'));
+    }
+
+    public function store(Request $request)
+    {
+        $idBarang = Barang::where('kode_barang', $request->kodeBarang)->pluck('id')->first();
+        
+        $inputs = $this->arrayHelper->snakeCaseKey($request->all());
+        $inputs['id_barang'] = $idBarang;
+        BarangKeluar::create($inputs);
+   
+        return redirect()->route('index-barangKeluar')->with('success', 'Data berhasil ditambahkan.');
     }
 
     public function generateReport(Request $request)
@@ -55,5 +85,18 @@ class BarangKeluarController extends Controller
         $pdf = PDF::loadView('report.BarangKeluar.pdf', compact('results'));
         return $pdf->stream('Laporan-Barang-Keluar-Periode-' .$results['period'].'.pdf');
         
+    }
+
+    private function generateKodeBarangKeluar()
+    {
+        $latest = BarangKeluar::latest()->first();
+        
+        if (!$latest) {
+            return 'KBK-0001';
+        }
+
+        $string = preg_replace("/[^0-9\.]/", '', $latest->kode_barang_keluar);
+
+        return 'KBK-' . sprintf('%04d', $string+1);
     }
 }

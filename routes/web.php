@@ -80,7 +80,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::prefix('barangMasuk')->group(function () {
         Route::get('/', [BarangMasukController::class, 'index'])->name('index-barangMasuk');
         Route::get('/create', [BarangMasukController::class, 'create'])->name('create-barangMasuk');
-        // Route::post('/store', [BarangMasukController::class, 'store'])->name('store-barangMasuk');
+        Route::post('/store', [BarangMasukController::class, 'store'])->name('store-barangMasuk');
         // Route::get('/edit/{idBarangMasuk}', [BarangMasukController::class, 'edit'])->name('edit-barangMasuk');
         // Route::put('/update/{idBarangMasuk}', [BarangMasukController::class, 'update'])->name('update-barangMasuk');
         // Route::delete('/delete/{idBarangMasuk}', [BarangMasukController::class, 'delete'])->name('delete-barangMasuk');
@@ -91,8 +91,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::prefix('barangKeluar')->group(function () {
         Route::get('/', [BarangKeluarController::class, 'index'])->name('index-barangKeluar');
-        // Route::get('/create', [BarangKeluarController::class, 'create'])->name('create-barangKeluar');
-        // Route::post('/store', [BarangKeluarController::class, 'store'])->name('store-barangKeluar');
+        Route::get('/create', [BarangKeluarController::class, 'create'])->name('create-barangKeluar');
+        Route::post('/store', [BarangKeluarController::class, 'store'])->name('store-barangKeluar');
         // Route::get('/edit/{idBarangKeluar}', [BarangKeluarController::class, 'edit'])->name('edit-barangKeluar');
         // Route::put('/update/{idBarangKeluar}', [BarangKeluarController::class, 'update'])->name('update-barangKeluar');
         // Route::delete('/delete/{idBarangKeluar}', [BarangKeluarController::class, 'delete'])->name('delete-barangKeluar');

@@ -21,6 +21,7 @@ class BarangKeluar extends Model
     protected $fillable = [
         'id',
         'id_barang',
+        'kode_barang_keluar',
         'kode_barang',
         'tanggal_keluar',
         'jumlah_keluar',
