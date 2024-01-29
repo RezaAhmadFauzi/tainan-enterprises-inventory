@@ -61,7 +61,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 Total Brand</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $chart3 ?? null }}</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $data['totalBrand'] }}</div>
                         </div>
                         <div class="col-auto">
                             <!-- <i class="fas fa-calendar fa-2x text-gray-300"></i> -->
@@ -79,7 +79,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                             Total Kategori</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $chart4 ?? null }}</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $data['totalCategory'] }}</div>
                         </div>
                         <div class="col-auto">
                         </div>
@@ -96,7 +96,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                             Total Supplier</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $chart5->nama_barang ?? null }}</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $data['totalSupplier'] }}</div>
                             <!-- <div class="h5 mb-0 font-weight-bold text-gray-800">Total : {{ $chart5->total ?? null }}</div> -->
                         </div>
                         <div class="col-auto">
@@ -120,7 +120,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                             Total Barang</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $chart3 ?? null }}</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $data['totalBarang'] }}</div>
                         </div>
                         <div class="col-auto">
                             <!-- <i class="fas fa-calendar fa-2x text-gray-300"></i> -->
@@ -138,7 +138,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                             Total Barang Masuk</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $chart4 ?? null }}</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $data['totalBarangMasuk'] }}</div>
                         </div>
                         <div class="col-auto">
                         </div>
@@ -155,7 +155,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                             Total Barang Keluar</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $chart5->nama_barang ?? null }}</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $data['totalBarangKeluar'] }}</div>
                             <!-- <div class="h5 mb-0 font-weight-bold text-gray-800">Total : {{ $chart5->total ?? null }}</div> -->
                         </div>
                         <div class="col-auto">

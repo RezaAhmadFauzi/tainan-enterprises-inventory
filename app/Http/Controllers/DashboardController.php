@@ -2,6 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Barang;
+use App\Models\BarangKeluar;
+use App\Models\BarangMasuk;
+use App\Models\Brand;
+use App\Models\Kategori;
+use App\Models\Supplier;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -9,13 +15,31 @@ class DashboardController extends Controller
     //
     public function view(Request $request)
     {
-        $chart1 = null;
-        $chart2 = null;
-        $chart3 = null;
-        $chart4 = null;
-        $chart5 = null;
+        $totalBrand = Brand::count();
+        $totalCategory = Kategori::count();
+        $totalSupplier = Supplier::count();
+        $totalBarang = Barang::count();
+        $totalBarangMasuk = BarangMasuk::count();
+        $totalBarangKeluar = BarangKeluar::count();
+
+        $data = [
+            'totalBrand' => $totalBrand,
+            'totalCategory' => $totalCategory,
+            'totalSupplier' => $totalSupplier,
+            'totalBarang' => $totalBarang,
+            'totalBarangMasuk' => $totalBarangMasuk,
+            'totalBarangKeluar' => $totalBarangKeluar,
+        ];
+
         $namaLokasi = 'Dimana Aja';
         $namaBarang = 'Test';
-        return view('dashboard', compact('chart1', 'chart2', 'chart3', 'chart4', 'chart5', 'namaLokasi', 'namaBarang'));
+        return view(
+            'dashboard', 
+            compact(
+                'namaLokasi', 
+                'namaBarang',
+                'data'
+            )
+        );
     }
 }
