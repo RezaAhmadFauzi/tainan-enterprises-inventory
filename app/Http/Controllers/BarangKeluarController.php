@@ -99,4 +99,11 @@ class BarangKeluarController extends Controller
 
         return 'KBK-' . sprintf('%04d', $string+1);
     }
+
+    public function delete($id)
+    {
+        $data = BarangKeluar::findOrFail($id);
+        $data->delete();
+        return redirect()->back()->with('success', 'Data berhasil dihapus.');
+    }
 }

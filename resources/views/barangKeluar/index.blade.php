@@ -40,7 +40,7 @@
                             <td>{{ $row['tanggal_keluar'] }}</td>
                             <td>{{ $row['tujuan'] }}</td>
                             <td>
-                                <form action="" method="POST">
+                                <form action="{{ route('delete-barangKeluar', $row->id) }}" method="POST">
                                     <a href="" class="btn btn-primary btn-circle btn-sm">
                                     <i class="fas fa-pencil-alt"></i>
                                     </a>

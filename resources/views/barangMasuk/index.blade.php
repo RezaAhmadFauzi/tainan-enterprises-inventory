@@ -38,7 +38,7 @@
                             <td>{{ $row['jumlah_masuk'] }}</td>
                             <td>{{ $row['tanggal_masuk'] }}</td>
                             <td>
-                                <form action="" method="POST">
+                                <form action="{{ route('delete-barangMasuk', $row->id) }}" method="POST">
                                     <a href="" class="btn btn-primary btn-circle btn-sm">
                                     <i class="fas fa-pencil-alt"></i>
                                     </a>

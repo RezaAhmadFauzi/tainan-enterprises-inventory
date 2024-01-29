@@ -100,4 +100,11 @@ class BarangMasukController extends Controller
    
         return redirect()->route('index-barangMasuk')->with('success', 'Data berhasil ditambahkan.');
     }
+
+    public function delete($id)
+    {
+        $data = BarangMasuk::findOrFail($id);
+        $data->delete();
+        return redirect()->back()->with('success', 'Data berhasil dihapus.');
+    }
 }
