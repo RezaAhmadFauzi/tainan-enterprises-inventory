@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helpers\ArrayHelper;
 use App\Models\Barang;
 use App\Models\BarangMasuk;
+use App\Models\StokBarang;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use PDF;
@@ -91,12 +92,29 @@ class BarangMasukController extends Controller
 
     public function store(Request $request)
     {
+
+        $existData = BarangMasuk::where('kode_barang', $request->kodeBarang)
+            ->where('tanggal_masuk', $request->tanggalMasuk)
+            ->first();
+        
+        if ($existData) {
+            return redirect()->back()->with('error', 'Tidak bisa menambahkan data di tanggal yang sama dengan kode barang yang sama');
+        }
+
         $idBarang = Barang::where('kode_barang', $request->kodeBarang)->pluck('id')->first();
         
         $inputs = $this->arrayHelper->snakeCaseKey($request->all());
         $inputs['id_barang'] = $idBarang;
-        $inputs['jumlah_masuk'] = 0;
         BarangMasuk::create($inputs);
+
+        StokBarang::create([
+            'kode_barang' => $inputs['kode_barang'],
+            'stok_awal' => $inputs['jumlah_masuk'],
+            'stok_masuk' => $inputs['jumlah_masuk'],
+            'stok_keluar' => null,
+            'stok_akhir' => $inputs['jumlah_masuk'],
+            'tanggal' => $inputs['tanggal_masuk']
+        ]);
    
         return redirect()->route('index-barangMasuk')->with('success', 'Data berhasil ditambahkan.');
     }

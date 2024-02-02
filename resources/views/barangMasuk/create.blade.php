@@ -22,6 +22,12 @@
                 <div class="invalid-feedback">Please fill out this field.</div>
             </div>
             <div class="form-group">
+                <label for="jumlah-barang-masuk">Jumlah Barang Masuk:</label>
+                <input type="number" class="form-control" id="jumlah-barang-masuk" placeholder="Enter Jumlah Barang Masuk" name="jumlahMasuk" required>
+                <div class="valid-feedback">Valid.</div>
+                <div class="invalid-feedback">Please fill out this field.</div>
+            </div>
+            <div class="form-group">
                     <label for="kodeBarang">Kode Barang:</label>
                     <div class="row">
                         <div class="col-md-3">
