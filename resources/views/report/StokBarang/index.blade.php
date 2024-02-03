@@ -36,7 +36,7 @@
                             <th>Stok Awal</th>
                             <th>Jumlah Masuk</th>
                             <th>Jumlah Keluar</th>
-                            <th>Stok Akhirr</th>
+                            <th>Stok Akhir</th>
                             <th>Tanggal</th>
                         </tr>
                     </thead>

@@ -8,6 +8,8 @@ use App\Models\BarangMasuk;
 use App\Models\StokBarang;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use PDF;
 
 class BarangMasukController extends Controller
@@ -105,24 +107,57 @@ class BarangMasukController extends Controller
         
         $inputs = $this->arrayHelper->snakeCaseKey($request->all());
         $inputs['id_barang'] = $idBarang;
-        BarangMasuk::create($inputs);
+        
+        DB::beginTransaction();
+        try {
+            BarangMasuk::create($inputs);
 
-        StokBarang::create([
-            'kode_barang' => $inputs['kode_barang'],
-            'stok_awal' => $inputs['jumlah_masuk'],
-            'stok_masuk' => $inputs['jumlah_masuk'],
-            'stok_keluar' => null,
-            'stok_akhir' => $inputs['jumlah_masuk'],
-            'tanggal' => $inputs['tanggal_masuk']
-        ]);
-   
-        return redirect()->route('index-barangMasuk')->with('success', 'Data berhasil ditambahkan.');
+            $stokBarang = StokBarang::where('kode_barang', $request->kodeBarang)->first();
+
+            if ($stokBarang) {
+                $stokBarang->stok_masuk = $stokBarang->stok_masuk + $inputs['jumlah_masuk'];
+                $stokBarang->stok_akhir = $stokBarang->stok_akhir + $inputs['jumlah_masuk'];
+                $stokBarang->tanggal = Carbon::now()->format('Y-m-d');
+                $stokBarang->save();
+            }else {
+                StokBarang::create([
+                    'kode_barang' => $inputs['kode_barang'],
+                    'stok_awal' => $inputs['jumlah_masuk'],
+                    'stok_masuk' => $inputs['jumlah_masuk'],
+                    'stok_keluar' => null,
+                    'stok_akhir' => $inputs['jumlah_masuk'],
+                    'tanggal' => $inputs['tanggal_masuk']
+                ]);
+            }
+            DB::commit();
+    
+            return redirect()->route('index-barangMasuk')->with('success', 'Data berhasil ditambahkan.');
+        } catch (\Exception $e) {
+            DB::rollback();
+            Log::error($e);
+            return redirect()->route('index-barangMasuk')->with('error', 'Oops terjadi kesalahan, Mohon untuk menghubungi teknisi');
+        }
     }
 
     public function delete($id)
     {
         $data = BarangMasuk::findOrFail($id);
-        $data->delete();
-        return redirect()->back()->with('success', 'Data berhasil dihapus.');
+
+        DB::beginTransaction();
+        try {
+            $stokBarang = StokBarang::where('kode_barang', $data->kode_barang)->first();
+            if ($stokBarang) {
+                $stokBarang->stok_masuk = $stokBarang->stok_masuk - $data->jumlah_masuk; 
+                $stokBarang->stok_akhir = $stokBarang->stok_akhir - $data->jumlah_masuk;
+                $stokBarang->save(); 
+            }
+            $data->delete();
+            DB::commit();
+            return redirect()->back()->with('success', 'Data berhasil dihapus.');
+        } catch (\Exception $e) {
+            DB::rollback();
+            Log::error($e);
+            return redirect()->route('index-barangMasuk')->with('error', 'Oops terjadi kesalahan, Mohon untuk menghubungi teknisi');
+        }
     }
 }
