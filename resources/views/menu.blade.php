@@ -18,15 +18,9 @@
             <span>Dashboard</span></a>
     </li>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        Master Data
-    </div>
-
-    <!-- Nav Item - Pages Collapse Menu -->
+    @auth
+    @if (Auth::user()->role != 3)
+    <!-- Nav Item - Pages Collapse Menu MASTER DATA-->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
             aria-expanded="true" aria-controls="collapseTwo">
@@ -52,8 +46,10 @@
             </div>
         </div>
     </li>
+    @endif
 
-    <!-- Nav Item - Pages Collapse Menu -->
+    @if (Auth::user()->role != 2)
+    <!-- Nav Item - Pages Collapse Menu TRANSAKSI--> 
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
             aria-expanded="true" aria-controls="collapseThree">
@@ -71,7 +67,7 @@
         </div>
     </li>
 
-    <!-- Nav Item - Pages Collapse Menu -->
+    <!-- Nav Item - Pages Collapse Menu LAPORAN-->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReport"
             aria-expanded="true" aria-controls="collapseReport">
@@ -91,21 +87,20 @@
             </div>
         </div>
     </li>
+    @endif
 
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        Manajemen Akun
-    </div>
-
-    <!-- Nav Item - Dashboard -->
+    @if (Auth::user()->role == null)
+    <!-- Nav Item - MANAJEMEN AKUN -->
     <li class="nav-item">
         <a class="nav-link" href="{{ route('index-user') }}">
         <i class="fas fa-lock-open"></i>
         <span>Manajemen Akun</span></a>
     </li>
+    @endif
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
+    @endauth
 
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">
