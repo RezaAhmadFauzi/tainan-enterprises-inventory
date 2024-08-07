@@ -8,6 +8,7 @@ use App\Models\AtributDetail;
 use App\Models\Barang;
 use App\Models\Brand;
 use App\Models\Kategori;
+use App\Models\StokBarang;
 use App\Services\BarangService;
 use Illuminate\Http\Request;
 
@@ -125,6 +126,12 @@ class BarangController extends Controller
     public function delete($id)
     {
         $data = Barang::findOrFail($id);
+
+        $stokBarang = StokBarang::where('kode_barang', $data->kode_barang);
+        if ($stokBarang->count() > 0) {
+            $stokBarang->delete();
+        }
+        
         $data->delete();
         return redirect()->route('index-barang')->with('success', 'Data berhasil dihapus.');
     }

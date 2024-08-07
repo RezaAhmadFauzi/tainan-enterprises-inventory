@@ -7,6 +7,8 @@
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
+        @auth
+        @if (Auth::user()->role != 3)
         <div class="card-header py-3">
             <a href="{{ route('create-brand') }}" class="btn btn-primary btn-icon-split">
             <span class="icon text-white-50">
@@ -15,11 +17,13 @@
             <span class="text">Tambah Data</span>
         </a>
         </div>
+        @endif
+        @endauth
         
         <div class="card-body">
             <div class="table-responsive">
                 <table id="myTable" class="table table-striped" style="width:100%">
-                <thead>
+                    <thead>
                         <tr>
                             <th>No</th>
                             <th>Nama Brand</th>
@@ -34,6 +38,8 @@
                             <td>{{ $row['nama_brand'] }}</td>
                             <td>{{ $row['statusName'] }}</td>
                             <td>
+                                @auth
+                                @if (Auth::user()->role != 3)
                                 <form action="{{ route('delete-brand', $row->id) }}" method="POST">
                                     <a href="{{ route('edit-brand', $row->id) }}" class="btn btn-primary btn-circle btn-sm">
                                     <i class="fas fa-pencil-alt"></i>
@@ -44,6 +50,8 @@
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </form>
+                                @endif
+                                @endauth
                             </td>
                         </tr>
                         @endforeach

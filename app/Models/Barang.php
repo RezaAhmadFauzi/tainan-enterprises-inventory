@@ -60,4 +60,22 @@ class Barang extends Model
     {
         return $this->belongsTo(Kategori::class, 'id_kategori');
     }
+
+    public function barangMasuk()
+    {
+        return $this->hasMany(BarangMasuk::class, 'id_barang');
+    }
+
+    public function barangKeluar()
+    {
+        return $this->hasMany(BarangKeluar::class, 'id_barang');
+    }
+
+    protected static function booted () {
+        static::deleting(function(Barang $barang) {
+             $barang->barangMasuk()->delete();
+             $barang->barangKeluar()->delete();
+        });
+    }
+    
 }

@@ -7,6 +7,8 @@
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
+        @auth
+        @if (Auth::user()->role != 2)
         <div class="card-header py-3">
             <a href="{{ route('create-barangKeluar') }}" class="btn btn-primary btn-icon-split">
             <span class="icon text-white-50">
@@ -15,6 +17,8 @@
             <span class="text">Tambah Data</span>
         </a>
         </div>
+        @endif
+        @endauth
         
         <div class="card-body">
             <div class="table-responsive">
@@ -40,16 +44,17 @@
                             <td>{{ $row['tanggal_keluar'] }}</td>
                             <td>{{ $row['tujuan'] }}</td>
                             <td>
+                                @auth
+                                @if (Auth::user()->role == null)
                                 <form action="{{ route('delete-barangKeluar', $row->id) }}" method="POST">
-                                    <a href="" class="btn btn-primary btn-circle btn-sm">
-                                    <i class="fas fa-pencil-alt"></i>
-                                    </a>
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger btn-circle btn-sm">
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </form>
+                                @endif
+                                @endauth
                             </td>
                         </tr>
                         @endforeach

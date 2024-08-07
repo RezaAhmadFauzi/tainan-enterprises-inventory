@@ -18,8 +18,6 @@
             <span>Dashboard</span></a>
     </li>
 
-    @auth
-    @if (Auth::user()->role != 3)
     <!-- Nav Item - Pages Collapse Menu MASTER DATA-->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
@@ -46,9 +44,7 @@
             </div>
         </div>
     </li>
-    @endif
 
-    @if (Auth::user()->role != 2)
     <!-- Nav Item - Pages Collapse Menu TRANSAKSI--> 
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
@@ -87,20 +83,16 @@
             </div>
         </div>
     </li>
-    @endif
 
-    @if (Auth::user()->role == null)
     <!-- Nav Item - MANAJEMEN AKUN -->
     <li class="nav-item">
         <a class="nav-link" href="{{ route('index-user') }}">
         <i class="fas fa-lock-open"></i>
         <span>Manajemen Akun</span></a>
     </li>
-    @endif
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
-    @endauth
 
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">

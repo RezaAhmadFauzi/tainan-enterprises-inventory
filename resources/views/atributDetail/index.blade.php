@@ -8,12 +8,16 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-2">
+            @auth
+            @if (Auth::user()->role != 3)
             <a href="{{ route('create-atributDetail', $idAtribut) }}" class="btn btn-primary btn-icon-split">
                 <span class="icon text-white-50">
                     <i class="fas fa-plus"></i>
                 </span>
                 <span class="text">Tambah Data</span>
             </a>
+            @endif
+            @endauth
             <a href="{{ route('index-atribut') }}" class="btn btn-warning btn-icon-split">
                 <span class="text">Kembali</span>
             </a>
@@ -37,6 +41,8 @@
                             <td>{{ $row['value'] }}</td>
                             <td>{{ $row['statusName'] }}</td>
                             <td>
+                                @auth
+                                @if (Auth::user()->role != 3)
                                 <form action="{{ route('delete-atributDetail', $row->id) }}" method="POST">
                                     <a href="{{ route('edit-atributDetail', $row->id) }}" class="btn btn-primary btn-circle btn-sm">
                                     <i class="fas fa-pencil-alt"></i>
@@ -47,6 +53,8 @@
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </form>
+                                @endif
+                                @endauth
                             </td>
                         </tr>
                         @endforeach
