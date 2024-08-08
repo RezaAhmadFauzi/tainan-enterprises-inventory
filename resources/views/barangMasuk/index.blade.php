@@ -30,7 +30,6 @@
                             <th>Nama Barang</th>
                             <th>Jumlah Masuk</th>
                             <th>Tanngal Masuk</th>
-                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -41,19 +40,6 @@
                             <td>{{ $row->barang->nama_barang}}</td>
                             <td>{{ $row['jumlah_masuk'] }}</td>
                             <td>{{ $row['tanggal_masuk'] }}</td>
-                            <td>
-                                @auth
-                                @if (Auth::user()->role == null)
-                                <form action="{{ route('delete-barangMasuk', $row->id) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-circle btn-sm">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </form>
-                                @endif
-                                @endauth
-                            </td>
                         </tr>
                         @endforeach
                     </tbody>

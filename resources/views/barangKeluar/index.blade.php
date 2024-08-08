@@ -31,7 +31,6 @@
                             <th>Jumlah Keluar</th>
                             <th>Tanggal Keluar</th>
                             <th>Tujuan</th>
-                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -43,19 +42,6 @@
                             <td>{{ $row['jumlah_keluar'] }}</td>
                             <td>{{ $row['tanggal_keluar'] }}</td>
                             <td>{{ $row['tujuan'] }}</td>
-                            <td>
-                                @auth
-                                @if (Auth::user()->role == null)
-                                <form action="{{ route('delete-barangKeluar', $row->id) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-circle btn-sm">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </form>
-                                @endif
-                                @endauth
-                            </td>
                         </tr>
                         @endforeach
                     </tbody>
