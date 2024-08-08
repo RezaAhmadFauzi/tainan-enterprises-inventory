@@ -35,6 +35,7 @@ class Supplier extends Model
     protected $fillable = [
         'id',
         'nama_supplier',
+        'alamat',
         'status',
         'created_at',
         'updated_at'

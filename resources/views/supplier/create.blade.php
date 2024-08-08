@@ -16,6 +16,12 @@
                 <div class="invalid-feedback">Please fill out this field.</div>
             </div>
             <div class="form-group">
+                <label for="alamat">Alamat:</label>
+                <input type="text" class="form-control" id="alamat" placeholder="Enter Alamat" name="alamat" required>
+                <div class="valid-feedback">Valid.</div>
+                <div class="invalid-feedback">Please fill out this field.</div>
+            </div>
+            <div class="form-group">
                 <button type="submit" class="btn btn-success">Submit</button>
                 <a href="{{ route('index-supplier') }}" class="btn btn-warning">Cancel</a>
             </div>

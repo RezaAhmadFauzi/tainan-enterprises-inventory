@@ -43,6 +43,17 @@
                 <div class="valid-feedback">Valid.</div>
                 <div class="invalid-feedback">Please fill out this field.</div>
             </div>
+            <div class="form-group">
+                <label for="nama-brand">Supplier:</label>
+                <select name="idSupplier" class="form-control" id="nama-supplier" required>
+                    <option value=""> -- pilih --</option>
+                    @foreach ($suppliers as $supplier)
+                        <option value="{{ $supplier->id }}"> {{ $supplier->nama_supplier }} </option>
+                    @endforeach
+                </select>
+                <div class="valid-feedback">Valid.</div>
+                <div class="invalid-feedback">Please fill out this field.</div>
+            </div>
 
             @foreach ($attributs as $attribut)
 

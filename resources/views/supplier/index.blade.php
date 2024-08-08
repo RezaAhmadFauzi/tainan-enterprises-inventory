@@ -27,6 +27,7 @@
                         <tr>
                             <th>No</th>
                             <th>Nama Supplier</th>
+                            <th>Alamat</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -36,6 +37,7 @@
                         <tr {!! $loop->odd ? 'style="background: #F0F5F9;" ' : '' !!}>
                             <td class="wrap-all">{{ $loop->index + 1 }}</td>
                             <td>{{ $row['nama_supplier'] }}</td>
+                            <td>{{ $row['alamat'] }}</td>
                             <td>{{ $row['statusName'] }}</td>
                             <td>
                                 @auth

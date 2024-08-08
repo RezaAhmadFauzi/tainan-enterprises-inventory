@@ -38,6 +38,7 @@ class Barang extends Model
         'kode_barang',
         'id_kategori',
         'id_brand',
+        'id_supplier',
         'atribute',
         'status',
         'created_at',
@@ -54,6 +55,11 @@ class Barang extends Model
     public function brand()
     {
         return $this->belongsTo(Brand::class, 'id_brand');
+    }
+
+    public function supplier()
+    {
+        return $this->belongsTo(Supplier::class, 'id_supplier');
     }
 
     public function kategori()

@@ -29,6 +29,7 @@
                             <th>Kode Barang</th>
                             <th>Nama Barang</th>
                             <th>Brand</th>
+                            <th>Supplier</th>
                             <th>Kategori</th>
                             <th>Status</th>
                             <th>Action</th>
@@ -41,6 +42,7 @@
                             <td>{{ $row['kode_barang'] }}</td>
                             <td>{{ $row['nama_barang'] }}</td>
                             <td>{{ $row->brand->nama_brand}}</td>
+                            <td>{{ $row->supplier->nama_supplier ?? null}}</td>
                             <td>{{ $row->kategori->nama_kategori}}</td>
                             <td>{{ $row['statusName'] }}</td>
                             <td>

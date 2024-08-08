@@ -9,6 +9,7 @@ use App\Models\Barang;
 use App\Models\Brand;
 use App\Models\Kategori;
 use App\Models\StokBarang;
+use App\Models\Supplier;
 use App\Services\BarangService;
 use Illuminate\Http\Request;
 
@@ -36,9 +37,10 @@ class BarangController extends Controller
         $kodeBarang = $this->generateKodeBarang();
         $dataKategori = Kategori::all();
         $dataBrand = Brand::all();
+        $suppliers = Supplier::all();
         $attributs = Atribut::with('details')->get();
         return view('barang.create', 
-            compact('kodeBarang', 'dataKategori', 'dataBrand', 'attributs')
+            compact('kodeBarang', 'dataKategori', 'dataBrand', 'attributs', 'suppliers')
         );
     }
     
@@ -83,8 +85,9 @@ class BarangController extends Controller
         $data = Barang::findOrFail($id);
         $dataKategori = Kategori::all();
         $dataBrand = Brand::all();
+        $suppliers = Supplier::all();
         $attributs = Atribut::with('details')->get();
-        return view('barang.edit', compact('data', 'dataKategori', 'dataBrand', 'attributs'));
+        return view('barang.edit', compact('data', 'dataKategori', 'dataBrand', 'attributs', 'suppliers'));
     }
 
     public function update($id, Request $request)
